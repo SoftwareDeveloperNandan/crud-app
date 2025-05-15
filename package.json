@@ -1,0 +1,35 @@
+{
+  "name": "crud-app",
+  "version": "1.0.0",
+  "description": "This is our MERN project with all validation and error handling properly.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://your-username@github.com/SoftwareDeveloperNandan/crud-app.git"
+  },
+  "keywords": [
+    "crud",
+    "app",
+    "Mern",
+    "crud",
+    "app"
+  ],
+  "author": "Nandan Pandit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SoftwareDeveloperNandan/crud-app/issues"
+  },
+  "homepage": "https://github.com/SoftwareDeveloperNandan/crud-app#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mongoose": "^8.14.3",
+    "nodemon": "^3.1.10"
+  }
+}
