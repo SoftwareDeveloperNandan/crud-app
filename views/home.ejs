@@ -9,7 +9,7 @@
                   <div class="d-flex align-items-center">
                     <h2 class="mb-0">All Contacts</h2>
                     <div class="ml-auto">
-                      <a href="form.html" class="btn btn-success"><i class="fa fa-plus-circle"></i> Add New</a>
+                      <a href="/add-contact" class="btn btn-success"><i class="fa fa-plus-circle"></i> Add New</a>
                     </div>
                   </div>
                 </div>
@@ -26,8 +26,8 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <% var i = 1 %>
-                    <% userData.forEach(item => { %>
+                    <% var i = paginationKey.pagingCounter %>
+                    <% paginationKey.userData.forEach(item => { %>
                       <tr>
                       <td><%= i++ %></td>
                       <td><%= item.firstname %></td>
@@ -37,12 +37,33 @@
                       <td width="150">
                         <a href="/show-contact/<%=item._id%>" class="btn btn-sm btn-circle btn-outline-info" title="Show"><i class="fa fa-eye"></i></a>
                         <a href="/update-contact/<%=item._id%>" class="btn btn-sm btn-circle btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></a>
-                        <a href="#" class="btn btn-sm btn-circle btn-outline-danger" title="Delete" onclick="confirm('Are you sure?')"><i class="fa fa-times"></i></a>
+                        <a href="/delete-user/<%=item._id%>" class="btn btn-sm btn-circle btn-outline-danger" title="Delete" onclick="confirm('Are you sure?')"><i class="fa fa-times"></i></a>
                       </td>
                     </tr>
                     <% }) %>
                   </tbody>
-                </table> 
+                </table>
+                
+                <nav>
+                  <ul class="pagination justify-content-center">
+                    <% let disableClass = paginationKey.hasPrevPage ? "" : "disabled" %>
+                    <li class="page-item <%= disableClass %>">
+                      <a class="page-link" href="/?page=<%=paginationKey.prevPage%>">Previous</a>
+                    </li>
+
+                    <% for(let i=1; i <= paginationKey.totalPages; i++) {
+                      let activeClass = paginationKey.currentPage == i ? "active" : "";
+                      %>
+                      <li class="page-item <%= activeClass %>"><a class="page-link" href="/?page=<%=i%>"><%= i %></a></li>
+                    <% } %>
+                    
+                    <% let nextClass = paginationKey.hasNextPage ? "" : "disabled" %>
+                    <li class="page-item <%= nextClass %> ">
+                      <a class="page-link" href="/?page=<%=paginationKey.nextPage%>">Next</a>
+                    </li>
+                  </ul>
+                </nav>
+                
               </div>
             </div>
           </div>
